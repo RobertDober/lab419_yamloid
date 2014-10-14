@@ -6,7 +6,7 @@ object SimpleParser{
   // -> AST
   def parse(content: String) : List[ Object ]  = {
     val strings = content split "\n"
-    parseList( strings.toList )
+    parseList( strings.toList filterNot( _.isEmpty ) )
   }
 
   // l: List of lines
@@ -14,6 +14,7 @@ object SimpleParser{
   def parseList( l: List[String] ) : List[ Object ] = {
     l match {
       case Nil => Nil
+      case List() => Nil
       case _ => parseGrouped( l )
     }
   }
@@ -24,12 +25,11 @@ object SimpleParser{
     // That seems like a stupid way to do this
     val indent = l indexWhere (_ != ' ')
     val groups = getGroups( l, indent )
-    List()
+    List(Map( "a" -> 42 ))
   }
+
 
   def getGroups( l: List[String], indent: Int ) : List[String] = {
     List()
-    
-    
   }
 }

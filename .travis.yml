@@ -1,0 +1,8 @@
+branches:
+  only:
+    - master
+
+# It can't get any easier, can it?
+language: scala
+scala:
+  - "2.11.3"
